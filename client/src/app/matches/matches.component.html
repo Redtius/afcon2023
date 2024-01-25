@@ -1,15 +1,16 @@
-<mat-card class="container">
-  <mat-card-header>
-    <mat-card-title>Matches</mat-card-title>
+<mat-card class="container secondary">
+  <mat-card-header class="container-header third">
+    <mat-card-title style="font-size: large;">Matches</mat-card-title>
     <mat-card-subtitle>Incoming Matches</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <mat-grid-list cols="1">
+  <mat-card-content class="third">
+    <mat-grid-list cols="1" rowHeight="2:1">
       <mat-grid-tile *ngFor="let match of matches.response">
-        <mat-card color="primary">
-          <mat-card-header>
+        <mat-card class="secondary">
+          <mat-card-header class="match-header primary">
             <mat-card-title>{{match.league.name}} {{match.league.season}}</mat-card-title>
             <mat-card-subtitle>{{match.league.round}}</mat-card-subtitle>
+          <span class="date">{{extractDate(match.fixture.date)}}</span>
           </mat-card-header>
           <mat-card-content>
             <div class="teams">
@@ -20,7 +21,15 @@
             <div class="separator">
               <h1>{{match.goals.home}}-{{match.goals.away}}</h1>
               <div>
-                <p>{{toMinutes(match.fixture.timestamp)}}'</p>
+                <p>{{match.fixture.status.long}}</p>
+                <mat-card *ngIf="isPlaying(match.fixture.status.short);else notPlaying" class="secondary time-card">
+                  <p>{{match.fixture.status.elapsed}}'</p>
+                  <mat-card-footer>
+                  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                </mat-card-footer></mat-card>
+
+                <ng-template #notPlaying>{{extractDate(match.fixture.date)}}</ng-template>
+
               </div>
             </div>
             <div class="away-team">
