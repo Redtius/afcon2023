@@ -1,12 +1,12 @@
 <mat-card class="container secondary">
-  <mat-card-header class="container-header third">
+  <!-- <mat-card-header class="container-header">
     <mat-card-title style="font-size: large;">Matches</mat-card-title>
     <mat-card-subtitle>Incoming Matches</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content class="third">
+  </mat-card-header> -->
+  <mat-card-content>
     <mat-grid-list cols="1" rowHeight="2:1">
       <mat-grid-tile *ngFor="let match of matches.response">
-        <mat-card class="secondary">
+        <mat-card class="secondary match-card">
           <mat-card-header class="match-header primary">
             <mat-card-title>{{match.league.name}} {{match.league.season}}</mat-card-title>
             <mat-card-subtitle>{{match.league.round}}</mat-card-subtitle>

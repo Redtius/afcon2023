@@ -3,13 +3,13 @@
     <img src="./../../assets/img/afcon.png" alt="logo" height="50px" width="auto" />
 </div>
   <span class="spacer"></span>
-  <button mat-icon-button routerLink="/" routerLinkActive="active">
+  <button mat-icon-button routerLink="/" routerLinkActive="active" [ngClass]="{'accent': this.getIsHome()}">
     <mat-icon>sports_soccer</mat-icon>
   </button>
-  <button mat-icon-button routerLink="/stats" routerLinkActive="active">
+  <button mat-icon-button routerLink="/stats" routerLinkActive="active" [ngClass]="{'accent': this.getIsStats()}">
     <mat-icon>leaderboard</mat-icon>
   </button>
-  <button mat-icon-button routerLink="/stats" routerLinkActive="active">
+  <button mat-icon-button routerLink="/stats" routerLinkActive="active" [ngClass]="{'accent': this.getIsPlayers()}">
     <mat-icon>person</mat-icon>
   </button>
 </mat-toolbar>
