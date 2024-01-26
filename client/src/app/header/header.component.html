@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <div class="far-left">
-    <img src="./../../assets/img/afcon.png" alt="logo" height="50px" width="auto" />
+    <img src="./../../assets/img/afcon.png" alt="logo" class="h-14 w-auto" height="50px" width="auto" />
 </div>
   <span class="spacer"></span>
   <button mat-icon-button routerLink="/" routerLinkActive="active" [ngClass]="{'accent': this.getIsHome()}">
@@ -9,7 +9,7 @@
   <button mat-icon-button routerLink="/stats" routerLinkActive="active" [ngClass]="{'accent': this.getIsStats()}">
     <mat-icon>leaderboard</mat-icon>
   </button>
-  <button mat-icon-button routerLink="/stats" routerLinkActive="active" [ngClass]="{'accent': this.getIsPlayers()}">
+  <button mat-icon-button routerLink="/players" routerLinkActive="active" [ngClass]="{'accent': this.getIsPlayers()}">
     <mat-icon>person</mat-icon>
   </button>
 </mat-toolbar>

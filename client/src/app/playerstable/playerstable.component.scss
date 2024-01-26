@@ -1,0 +1,28 @@
+@import './../../styles.scss';
+
+.mat-column-stat{
+  text-align: end;
+}
+
+.content-table {
+  box-shadow: none;
+  color: #bdbdbd;
+  border: none;
+  min-width: 500px;
+  max-width: 600px;
+
+}
+
+td{
+  border-bottom: solid 1px #bdbdbd;
+}
+
+
+th{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin: 6px;
+  border-bottom: solid 1px #757575;
+  color: #757575;
+}
