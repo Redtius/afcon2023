@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="fixed-toolbar">
   <div class="far-left">
     <img src="./../../assets/img/afcon.png" alt="logo" class="h-14 w-auto" height="50px" width="auto" />
 </div>
@@ -13,3 +13,5 @@
     <mat-icon>person</mat-icon>
   </button>
 </mat-toolbar>
+<div class="h-16 w-full"></div>
+<app-infoheader [title]="this.getTitle()"></app-infoheader>

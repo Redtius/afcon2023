@@ -4,6 +4,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { PlayersService } from './players.service';
 import { AllTopStats, TopStat } from './models/topstats.model';
+import { GOALS_URL,ASSISTS_URL,RED_URL,YELLOW_URL } from './players.data';
 
 @Component({
   selector: 'app-players',
@@ -14,39 +15,90 @@ import { AllTopStats, TopStat } from './models/topstats.model';
 })
 export class PlayersComponent implements OnInit {
   stats: AllTopStats = {
-    goals: [],
-    assists: [],
-    redCards: [],
-    yellowCards: []
+    goals:[],
+    assists:[],
+    yellowCards:[],
+    redCards:[],
   };
-  columns: string[][] = [];
-  loading = false;
   constructor(private playerService:PlayersService){}
 
   ngOnInit(): void {
-    this.loading=true;
     this.getGoals();
+    this.getAssists();
+    this.getYellowCards();
+    this.getRedCards();
   }
 
   getGoals(){
-    this.playerService.getGoals().subscribe((data)=>{
-      console.log(data);
+    this.playerService.getStat(GOALS_URL).subscribe((data)=>{
       data.response.forEach((item:any)=>{
         this.stats.goals.push({
+          player:{
+            player_id: item.player.id,
+            player_name: item.player.name,
+            image: item.player.photo,
+            country: item.player.nationality,
+            country_image: item.statistics[0].team.logo,
+          },
+          stat: item.statistics[0].goals.total,
+        });
+      });
+    },
+    );
+  }
+
+  getAssists(){
+    this.playerService.getStat(ASSISTS_URL).subscribe((data)=>{
+      data.response.forEach((item:any)=>{
+        this.stats.assists.push({
           player:{
             player_id: item.player.player_id,
             player_name: item.player.name,
             image: item.player.photo,
             country: item.player.nationality,
-            country_image: 'https://cdn.countryflags.com/thumbs/'+item.player.nationality+'/flag-square-250.png'
+            country_image: item.statistics[0].team.logo,
           },
-          stat: item.statistics[0].goals.total,
+          stat: item.statistics[0].goals.assists,
         });
       });
-
-      this.loading=false;
-
     },
     );
   }
+
+  getYellowCards(){
+    this.playerService.getStat(YELLOW_URL).subscribe((data)=>{
+      data.response.forEach((item:any)=>{
+        this.stats.yellowCards.push({
+          player:{
+            player_id: item.player.player_id,
+            player_name: item.player.name,
+            image: item.player.photo,
+            country: item.player.nationality,
+            country_image: item.statistics[0].team.logo,
+          },
+          stat: item.statistics[0].cards.yellow,
+        });
+      });
+    },
+    );
+  }
+
+  getRedCards(){
+    this.playerService.getStat(RED_URL).subscribe((data)=>{
+      data.response.forEach((item:any)=>{
+        this.stats.redCards.push({
+          player:{
+            player_id: item.player.player_id,
+            player_name: item.player.name,
+            image: item.player.photo,
+            country: item.player.nationality,
+            country_image: item.statistics[0].team.logo,
+          },
+          stat: item.statistics[0].cards.red,
+        });
+      });
+    },
+    );
+  }
+
 }

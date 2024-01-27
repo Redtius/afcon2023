@@ -1,7 +1,18 @@
 <div class="w-full p-12">
-<div class="grid grid-cols-2 gap-y-8">
-  <div class="flex justify-center">
-    <div class="table-container"><app-playerstable class="stats-table" [topStats]="this.stats.goals" [displayedColumns]="['Players','Goals']"></app-playerstable></div>
+<div class="grid grid-cols-1 gap-y-8 xl:grid-cols-2">
+  <div class="flex justify-center" *ngIf="stats.goals.length > 0">
+    <div class="table-container">
+      <div class="third w-full text-center"></div>
+      <app-playerstable class="stats-table" [topStats]="this.stats.goals" [displayedColumns]="['Players','Goals']"></app-playerstable></div>
+  </div>
+  <div class="flex justify-center" *ngIf="stats.assists.length > 0">
+    <div class="table-container"><app-playerstable class="stats-table" [topStats]="this.stats.assists" [displayedColumns]="['Players','Goals']"></app-playerstable></div>
+  </div>
+  <div class="flex justify-center" *ngIf="stats.yellowCards.length > 0">
+    <div class="table-container"><app-playerstable class="stats-table" [topStats]="this.stats.yellowCards" [displayedColumns]="['Players','Goals']"></app-playerstable></div>
+  </div>
+  <div class="flex justify-center" *ngIf="stats.redCards.length > 0">
+    <div class="table-container"><app-playerstable class="stats-table" [topStats]="this.stats.redCards" [displayedColumns]="['Players','Goals']"></app-playerstable></div>
   </div>
 </div>
 </div>

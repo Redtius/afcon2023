@@ -1,13 +1,14 @@
-<table mat-table [dataSource]="this.topStats" class="mat-elevation-z8 secondary content-table">
+<div class="mat-elevation-z8">
+<table mat-table [dataSource]="this.topStats" class="secondary content-table">
 
   <ng-container matColumnDef="player" class="primary">
     <th mat-header-cell *matHeaderCellDef> {{this.displayedColumns[0]}} </th>
     <td mat-cell *matCellDef="let player;let i=index" >
       <div class="flex justify-normal items-center space-x-4" style="color: #bdbdbd;">
       <span class="flex items-center">{{i+1}}</span>
-      <span><img class="w-10 h-auto rounded-full" src="{{player.player.image}}" alt="Player image"/></span>
+      <span><img class="w-10 h-auto rounded-full" style="border:solid 1px #bdbdbd;" src="{{player.player.image}}" alt="Player image"/></span>
       <span><div>{{player.player.player_name}}</div>
-        <div class="flex items-center space-x-3" style="color: #757575;"><span class="flag"><img src="{{player.player.country_image}}" alt="flag" class="w-4 h-4 rounded-sm object-cover" style="border: solid 1px #bdbdbd;"/></span><span>{{player.player.country}}</span></div>
+        <div class="flex items-center space-x-3" style="color: #757575;"><span class="flag"><img src="{{player.player.country_image}}" alt="flag" class="w-4 h-4 rounded-sm object-cover"/></span><span>{{player.player.country}}</span></div>
       </span>
     </div>
 
@@ -23,3 +24,9 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+showFirstLastButtons
+aria-label="Select page of players">
+</mat-paginator>
+</div>

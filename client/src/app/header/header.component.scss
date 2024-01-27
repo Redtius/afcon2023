@@ -13,3 +13,12 @@
 button {
   margin:0 8px;
 }
+
+.fixed-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
