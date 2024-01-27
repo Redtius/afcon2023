@@ -1,11 +1,13 @@
-<div class="mat-elevation-z8">
-<table mat-table [dataSource]="this.topStats" class="secondary content-table">
+<div class="mat-elevation-z8 content-table">
+  <div class="table-title text-xl secondary w-full p-2"><h1 style="color: #bdbdbd;">{{this.title}}</h1></div>
+
+  <table mat-table [dataSource]="dataSource" class="secondary">
 
   <ng-container matColumnDef="player" class="primary">
     <th mat-header-cell *matHeaderCellDef> {{this.displayedColumns[0]}} </th>
     <td mat-cell *matCellDef="let player;let i=index" >
       <div class="flex justify-normal items-center space-x-4" style="color: #bdbdbd;">
-      <span class="flex items-center">{{i+1}}</span>
+      <span class="flex items-center">{{i + 1 + paginator.pageIndex * paginator.pageSize}}</span>
       <span><img class="w-10 h-auto rounded-full" style="border:solid 1px #bdbdbd;" src="{{player.player.image}}" alt="Player image"/></span>
       <span><div>{{player.player.player_name}}</div>
         <div class="flex items-center space-x-3" style="color: #757575;"><span class="flag"><img src="{{player.player.country_image}}" alt="flag" class="w-4 h-4 rounded-sm object-cover"/></span><span>{{player.player.country}}</span></div>
@@ -25,8 +27,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 20]"
-showFirstLastButtons
+<mat-paginator #paginator [length]="dataSource.data.length" [pageSize]="5" class="secondary" style="color:#bdbdbd;"
 aria-label="Select page of players">
 </mat-paginator>
 </div>

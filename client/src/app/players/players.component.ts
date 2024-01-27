@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { PlayersService } from './players.service';
 import { AllTopStats, TopStat } from './models/topstats.model';
 import { GOALS_URL,ASSISTS_URL,RED_URL,YELLOW_URL } from './players.data';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-players',
   standalone: true,
-  imports: [PlayerstableComponent, MatGridListModule,CommonModule],
+  imports: [PlayerstableComponent, MatGridListModule,CommonModule,MatProgressSpinnerModule],
   templateUrl: './players.component.html',
   styleUrl: './players.component.scss'
 })
@@ -20,6 +21,7 @@ export class PlayersComponent implements OnInit {
     yellowCards:[],
     redCards:[],
   };
+  Loading: number = 0;
   constructor(private playerService:PlayersService){}
 
   ngOnInit(): void {
@@ -42,7 +44,9 @@ export class PlayersComponent implements OnInit {
           },
           stat: item.statistics[0].goals.total,
         });
+
       });
+      this.Loading++;
     },
     );
   }
@@ -61,6 +65,7 @@ export class PlayersComponent implements OnInit {
           stat: item.statistics[0].goals.assists,
         });
       });
+      this.Loading++;
     },
     );
   }
@@ -79,6 +84,7 @@ export class PlayersComponent implements OnInit {
           stat: item.statistics[0].cards.yellow,
         });
       });
+      this.Loading++;
     },
     );
   }
@@ -97,6 +103,7 @@ export class PlayersComponent implements OnInit {
           stat: item.statistics[0].cards.red,
         });
       });
+      this.Loading++;
     },
     );
   }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {MatTableModule ,MatTableDataSource} from '@angular/material/table';
 import { TopStat } from '../players/models/topstats.model';
 import { CommonModule } from '@angular/common';
@@ -14,15 +14,29 @@ import { InfoheaderComponent } from '../infoheader/infoheader.component';
   styleUrl: './playerstable.component.scss'
 })
 export class PlayerstableComponent implements OnInit{
-  constructor() {
-    this.topStats = [];
-    this.displayedColumns = [];
+  dataSource: MatTableDataSource<TopStat>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  @Input() set topStats(value: TopStat[]) {
+    this.dataSource = new MatTableDataSource<TopStat>(value);
   }
+  @Input() displayedColumns: string[];
+
+  @Input() title: string = 'Players Stats';
+
+  constructor() {
+    this.displayedColumns = [];
+    this.dataSource = new MatTableDataSource<TopStat>([]);
+  }
+
   ngOnInit(): void {
     this.displayedColumns = ['player', 'stat'];
-    console.log(this.topStats)
+    console.log(this.dataSource);
   }
-@Input() topStats: TopStat[];
-@Input() displayedColumns: string[];
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
 
 }
