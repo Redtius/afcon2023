@@ -80,3 +80,10 @@ img{
   .container{
     box-shadow: none;
 }
+
+.football-background {
+  background-image: url('./../../assets/img/football-shoes.png');
+  background-size:contain; /* or contain depending on how you want it to fit */
+  background-position: top;
+  background-repeat: no-repeat;
+}
