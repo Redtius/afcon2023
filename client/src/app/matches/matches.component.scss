@@ -79,11 +79,17 @@ img{
  }
   .container{
     box-shadow: none;
+    position: relative;
 }
 
-.football-background {
-  background-image: url('./../../assets/img/football-shoes.png');
-  background-size:contain; /* or contain depending on how you want it to fit */
-  background-position: top;
-  background-repeat: no-repeat;
+.football-shoe {
+  position:absolute;
+  z-index: -1;
+  left: -100px;
+}
+
+.bg-image{
+  opacity: 50%;
+  width: 300px; /* Adjust as needed */
+  height: auto;
 }
