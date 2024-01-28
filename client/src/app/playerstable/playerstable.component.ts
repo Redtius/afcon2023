@@ -4,7 +4,6 @@ import { TopStat } from '../players/models/topstats.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import { InfoheaderComponent } from '../infoheader/infoheader.component';
 
 @Component({
   selector: 'app-playerstable',
@@ -32,7 +31,6 @@ export class PlayerstableComponent implements OnInit{
 
   ngOnInit(): void {
     this.displayedColumns = ['player', 'stat'];
-    console.log(this.dataSource);
   }
 
   ngAfterViewInit(): void {

@@ -1,8 +1,16 @@
+<main class="flex justify-center items-center h-screen" *ngIf="Loading;else showmatches;">
+  <div>
+    <mat-spinner class="spinner" diameter="100" strokeWidth="10"></mat-spinner>
+  </div>
+
+</main>
+
+<ng-template #showmatches>
 <mat-card class="container secondary">
   <!-- <div class="football-shoe"><img src="./../../assets/img/football-shoes.png" class="bg-image" width="300px" height="auto" alt="football-shoes"></div> -->
   <mat-card-content>
     <mat-grid-list cols="1" rowHeight="3:1">
-      <mat-grid-tile *ngFor="let match of matches.response">
+      <mat-grid-tile *ngFor="let match of matches?.response">
         <mat-card class="secondary match-card">
           <mat-card-header class="match-header primary">
             <mat-card-title>{{match.league.name}} {{match.league.season}}</mat-card-title>
@@ -16,7 +24,7 @@
               <h4>{{match.teams.home.name}}</h4>
             </div>
             <div class="separator">
-              <h1 class="text-xl">{{match.goals.home}}-{{match.goals.away}}</h1>
+              <h1 class="text-xl" *ngIf="match.goals.home != null">{{match.goals.home}}-{{match.goals.away}}</h1>
               <div>
                 <p>{{match.fixture.status.long}}</p>
                 <mat-card *ngIf="isPlaying(match.fixture.status.short);else notPlaying" class="secondary time-card">
@@ -25,7 +33,7 @@
                   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
                 </mat-card-footer></mat-card>
 
-                <ng-template #notPlaying>{{extractDate(match.fixture.date)}}</ng-template>
+                <ng-template #notPlaying><span *ngIf="isPlayed(match.fixture.status.short)">{{extractTime(match.fixture.date)}}</span></ng-template>
 
               </div>
             </div>
@@ -43,3 +51,4 @@
   </mat-card-content>
 
 </mat-card>
+</ng-template>
