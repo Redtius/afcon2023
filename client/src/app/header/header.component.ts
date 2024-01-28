@@ -6,11 +6,12 @@ import { RouterLink, RouterLinkActive,Router, NavigationStart, NavigationEnd } f
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InfoheaderComponent } from '../infoheader/infoheader.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatToolbarModule,CommonModule,MatIconModule,FormsModule,MatButtonModule,RouterLink,RouterLinkActive,InfoheaderComponent],
+  imports: [MatToolbarModule,MatTooltipModule,CommonModule,MatIconModule,FormsModule,MatButtonModule,RouterLink,RouterLinkActive,InfoheaderComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -57,7 +58,7 @@ export class HeaderComponent implements OnInit{
 
   private updateActiveRoute(url: string) {
     this.isHome = url === '/';
-    this.isStats = url === '/stats';
+    this.isStats = url === '/leaderboard';
     this.isPlayers = url === '/players';
   }
 

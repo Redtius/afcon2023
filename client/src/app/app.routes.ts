@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { MatchesComponent } from './matches/matches.component';
 import { PlayersComponent } from './players/players.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 export const routes: Routes = [
   {
@@ -9,9 +10,9 @@ export const routes: Routes = [
     component: MatchesComponent,
   },
   {
-    path: 'stats',
+    path: 'leaderboard',
     title: 'Leaderboard',
-    component: MatchesComponent,
+    component: LeaderboardComponent,
   },
   {
     path: 'players',
