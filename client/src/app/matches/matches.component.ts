@@ -6,11 +6,13 @@ import { Matches } from './matches.model.js';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatchesService } from './matches.service.js';
+import { RouterLink,RouterLinkActive } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-matches',
   standalone: true,
-  imports: [MatCardModule,MatProgressSpinnerModule,CommonModule,MatGridListModule,MatProgressBarModule],
+  imports: [RouterModule,MatCardModule,MatProgressSpinnerModule,CommonModule,MatGridListModule,MatProgressBarModule],
   templateUrl: './matches.component.html',
   styleUrl: './matches.component.scss'
 })

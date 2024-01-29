@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit{
   private isStats:boolean = false;
   private isHome:boolean = false;
   private isPlayers:boolean = false;
+  public isTeam:boolean = false;
   public getIsStats():boolean{  return this.isStats; }
   public getIsHome():boolean{ return this.isHome; }
   public getIsPlayers():boolean{ return this.isPlayers; }
@@ -53,6 +54,9 @@ export class HeaderComponent implements OnInit{
     }else if(this.isPlayers){
       return "Statistiques";
     }
+    else if(this.isTeam){
+      return "Team Statistiques";
+    }
     return undefined;
   }
 
@@ -60,6 +64,7 @@ export class HeaderComponent implements OnInit{
     this.isHome = url === '/';
     this.isStats = url === '/leaderboard';
     this.isPlayers = url === '/players';
+    this.isTeam = url.includes('/team/');
   }
 
   }

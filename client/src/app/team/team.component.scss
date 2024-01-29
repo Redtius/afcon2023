@@ -1,0 +1,17 @@
+@import './../../styles.scss';
+
+:host {
+  display: block;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 24px;
+  height: 24px;
+}

@@ -1,1 +1,17 @@
-<p>leaderboard works!</p>
+<mat-card class="secondary m-12" style="border: solid 1px #bdbdbd;">
+    <mat-card-header class="flex justify-between">
+        <mat-card-title><h1 class="text-2xl" style="color: #bdbdbd;">{{this.selected.value}}</h1></mat-card-title>
+        <mat-form-field class="secondary" >
+            <mat-select placeholder="Select Phase" [formControl]="selected"  [(value)]="selected">
+                <mat-option value="Groups Phase">Groups Stage</mat-option>
+                <mat-option value="Final Phase">Final Phase</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-header>
+    <mat-card-content>
+        <app-final-board [data]="FinalData"></app-final-board>
+    </mat-card-content>
+    <mat-card-footer>
+        <h1 class="font-bold">Hour:</h1><h1>GMT</h1>
+    </mat-card-footer>
+</mat-card>

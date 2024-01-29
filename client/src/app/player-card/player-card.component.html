@@ -1,0 +1,12 @@
+<mat-card class="secondary rounded-lg shadow-md p-4" style="border: solid 1px #bdbdbd;">
+  <div class="flex items-center justify-center">
+    <img style="border: solid 1px #bdbdbd;" src="{{ player?.photo }}" class="w-32 h-32 object-cover rounded-full" alt="Player Image">
+  </div>
+  <mat-divider class="my-2"></mat-divider>
+  <div class="mt-4">
+    <div class="flex justify-between"><h1 class="text-xl font-semibold">{{ player?.name }}</h1><h1 class="text-xl font-bold">{{ player?.number }} </h1></div>
+    <p >{{ player?.age }} years old</p>
+    <p class="text-end">{{ player?.position }}</p>
+  </div>
+</mat-card>
+

@@ -1,0 +1,73 @@
+<main class="flex justify-center items-center h-screen" *ngIf="Loading<1;else showteam;">
+  <div>
+    <mat-spinner class="spinner" diameter="100" strokeWidth="10"></mat-spinner>
+  </div>
+
+</main>
+<ng-template #showteam>
+<mat-card class="secondary my-8" style="border: solid 1px #bdbdbd;">
+    <mat-card-header class="primary rounded-t-sm p-4" style="border-bottom: solid 1px #bdbdbd;">
+        <mat-card-title><h1 class="text-2xl" style="color: #bdbdbd;">{{this.teamData?.team?.name}}</h1></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="grid grid-cols-2 gap-1 p-8">
+            <div class="flex justify-center items-center"><img src="{{this.teamData?.team?.logo}}" class="w-48 h-auto" alt="Team Logo"></div>
+            <div>
+              <div class="text-lg">Form:</div><div class="flex flex-wrap">
+                <span *ngFor="let item of this.teamData?.form?.split('')" [ngClass]="{'text-green-500 bg-green-200': item === 'W',
+                'text-yellow-500 bg-yellow-200': item === 'D',
+                'text-red-500 bg-red-200': item === 'L',
+              }" class="rounded-sm m-1 box"><h1 class="font-bold">{{item}}</h1></span>
+              </div>
+              <div class="text-lg">Line ups:</div>
+              <div *ngFor="let item of this.teamData?.lineups" class="font-semibold">{{item.formation}} : ({{item.played}})</div>
+
+            </div>
+        </div>
+        <div>
+          <mat-tab-group>
+            <mat-tab label="Statistiques">
+              <div class="p-4">
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Biggest Loss:</span>
+                  <span>{{ this.teamData?.biggest.loses.home }}</span>
+                </div>
+
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Biggest Win:</span>
+                  <span>{{ this.teamData?.biggest.wins.home }}</span>
+                </div>
+
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Clean Sheets:</span>
+                  <span>{{ this.teamData?.clean_sheet.home }}</span>
+                </div>
+
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Failed to Score:</span>
+                  <span>{{ this.teamData?.failed_to_score.home }}</span>
+                </div>
+
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Goals Conceded:</span>
+                  <span>{{ this.teamData?.goals.against.total.total }}</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="font-semibold">Goals Scored:</span>
+                  <span>{{ this.teamData?.goals.for.total.total }}</span>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Players">
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 m-2">
+                  <app-player-card *ngFor="let item of this.players" [player]="item"></app-player-card>
+              </div>
+              </mat-tab>
+          </mat-tab-group>
+        </div>
+
+
+    </mat-card-content>
+</mat-card>
+</ng-template>
