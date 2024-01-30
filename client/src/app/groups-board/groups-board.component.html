@@ -1,4 +1,11 @@
+<main class="flex justify-center items-center h-screen" *ngIf="Loading;else showboards;">
+  <div>
+    <mat-spinner class="spinner" diameter="100" strokeWidth="10"></mat-spinner>
+  </div>
 
+  </main>
+  <ng-template #showboards>
   <div *ngFor="let data of this.dataSource.data">
     <app-group-card [group]="data" ></app-group-card>
   </div>
+  </ng-template>
