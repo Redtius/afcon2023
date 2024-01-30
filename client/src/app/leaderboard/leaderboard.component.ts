@@ -18,6 +18,6 @@ import { Matches } from '../matches/matches.model';
   styleUrl: './leaderboard.component.scss'
 })
 export class LeaderboardComponent {
-  public selected:FormControl = new FormControl('Final Phase');
+  public selected:FormControl = new FormControl('Groups Phase');
   public FinalData: Matches = fixtures;
 }

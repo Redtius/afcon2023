@@ -1,0 +1,83 @@
+<mat-card class="secondary my-4" style="border: solid 1px #bdbdbd; box-shadow: none;">
+  <mat-card-header class="primary rounded-t-sm p-4" style="border: solid 1px #bdbdbd;">
+    <mat-card-title>{{this.dataSource.data[0].group}}</mat-card-title>
+  </mat-card-header>
+
+
+<mat-card-content class="p-8">
+<div class="overflow-x-auto custom-scrollbar">
+  <table mat-table [dataSource]="dataSource" class="secondary w-full min-w-max">
+
+    <ng-container matColumnDef="Rank">
+      <th mat-header-cell *matHeaderCellDef class="text-right"> Rank </th>
+      <td mat-cell *matCellDef="let standing" style="color: #bdbdbd;" class="text-right"> {{standing.rank}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Team">
+      <th mat-header-cell *matHeaderCellDef> Team </th>
+      <td mat-cell *matCellDef="let standing"><div class="flex items-center" >
+        <span>
+        <img [src]="standing.team.logo" alt="logo" width="20" height="20" style="margin-right: 10px; " class="rounded-sm">
+      </span>
+      <span class="font-bold">
+        {{standing.team.name}}
+      </span>
+    </div>
+
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="MP">
+      <th mat-header-cell *matHeaderCellDef> MP </th>
+      <td mat-cell *matCellDef="let standing"> {{standing.all.played}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="W">
+      <th mat-header-cell *matHeaderCellDef> W </th>
+      <td mat-cell *matCellDef="let standing"> {{standing.all.win}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="D">
+      <th mat-header-cell *matHeaderCellDef> D </th>
+      <td mat-cell *matCellDef="let standing"> {{standing.all.draw}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="L">
+      <th mat-header-cell *matHeaderCellDef> L </th>
+      <td mat-cell *matCellDef="let standing"> {{standing.all.lose}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="GF">
+      <th mat-header-cell *matHeaderCellDef> GF </th>
+      <td mat-cell *matCellDef="let standing"> {{standing.all.goals.for}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="GA">
+      <th mat-header-cell *matHeaderCellDef> GA </th>
+      <td mat-cell *matCellDef="let standing"> {{standing.all.goals.against}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="GD">
+      <th mat-header-cell *matHeaderCellDef> GD </th>
+      <td mat-cell *matCellDef="let standing"> {{standing.goalsDiff}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Pts">
+      <th mat-header-cell *matHeaderCellDef> PTS </th>
+      <td mat-cell *matCellDef="let standing"> {{standing.points}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Form">
+      <th mat-header-cell *matHeaderCellDef> Form </th>
+      <td mat-cell *matCellDef="let standing"> {{standing.form}} </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+</mat-card-content>
+</mat-card>

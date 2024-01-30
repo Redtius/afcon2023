@@ -1,0 +1,23 @@
+@import './../../styles.scss';
+
+td,th
+{
+  color: #bdbdbd;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px; /* width of the entire scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #424242; /* color of the tracking area */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #bdbdbd; /* color of the scroll thumb */
+  border-radius: 5px; /* roundness of the scroll thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #858585; /* color when hovering over the scroll thumb */
+}

@@ -1,1 +1,4 @@
-<p>groups-board works!</p>
+
+  <div *ngFor="let data of this.dataSource.data">
+    <app-group-card [group]="data" ></app-group-card>
+  </div>
