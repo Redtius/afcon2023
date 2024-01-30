@@ -1,4 +1,4 @@
-import { baseURL } from './../../assets/apiConfig';
+import { baseURL } from '../../assets/apiConfig';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
