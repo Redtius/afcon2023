@@ -1,7 +1,5 @@
 # Africa Cup of Nations 2023 Live Statistics App
 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" width="48px" height="auto" />
-
 ## Overview
 This application provides real-time statistics and updates for the Africa Cup of Nations 2023. Using Angular 17 for the frontend and API-Football for backend data retrieval, it offers users an interactive and up-to-date experience for following the tournament.
 
@@ -13,7 +11,7 @@ This application provides real-time statistics and updates for the Africa Cup of
 - **Historical Data:** Access to historical data.
 - **Leaderboard:** Access to historical data.
 
-## Technology Stack
+## Technology Stack <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" width="48px" height="auto" />
 - **Frontend:** Angular 17.
 - **API:** API-Football for fetching live data.
 - **Styling:** Css Tailwind & SCSS.
