@@ -1,52 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import {MatTabsModule} from '@angular/material/tabs';
-import { Player } from '../player-card/player.model';
-import { PlayerCardComponent } from '../player-card/player-card.component';
-import { ActivatedRoute } from '@angular/router';
-import { TeamService } from './team.service';
+import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { PlayerCardComponent } from '../player-card/player-card.component';
+import { TeamService } from './team.service';
 
 @Component({
   selector: 'app-team',
   standalone: true,
-  imports: [MatCardModule,CommonModule,MatProgressSpinnerModule,MatTabsModule,PlayerCardComponent],
+  imports: [CommonModule, MatCardModule, MatProgressSpinnerModule, MatTabsModule, PlayerCardComponent],
   templateUrl: './team.component.html',
-  styleUrl: './team.component.scss'
+  styleUrls: ['./team.component.scss'] // Note: Corrected property name from 'styleUrl' to 'styleUrls' and should be an array.
 })
-export class TeamComponent implements OnInit{
-  public id: number = 0;
-  public Loading: number = 0;
-  public teamData: any|undefined;
+export class TeamComponent implements OnInit {
+  public id: number | null = null;
+  public Loading = 0;
+  public teamData: any | undefined;
+  public players: any[] | undefined;
 
-  constructor(activatedRoute:ActivatedRoute, private teamService:TeamService) {
-    activatedRoute.params.subscribe((params) => {
-      this.id = params['id'];
-    });
-  }
+  constructor(private activatedRoute: ActivatedRoute, private teamService: TeamService) {}
 
   ngOnInit(): void {
-    this.getTeam(this.id);
-    this.getPlayers(this.id);
+    this.activatedRoute.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.id = +id; // Convert string to number
+        this.Loading = 0; // Reset loading state
+        this.getTeam(this.id);
+        this.getPlayers(this.id);
+      }
+    });
   }
 
-  getTeam(id:number):void{
-    this.teamService.getTeam(id).subscribe((team) => {
+  getTeam(id: number): void {
+    this.teamService.getTeam(id).subscribe(team => {
       this.teamData = team.response;
-      console.log(this.teamData);
       this.Loading++;
     });
   }
 
-  getPlayers(id:number):void{
-    this.teamService.getPlayers(id).subscribe((squad) => {
+  getPlayers(id: number): void {
+    this.teamService.getPlayers(id).subscribe(squad => {
       this.players = squad.response[0].players;
-      console.log(this.players);
       this.Loading++;
     });
   }
-public players: any[] |undefined;
-
-
 }
