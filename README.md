@@ -11,7 +11,7 @@ This application provides real-time statistics and updates for the Africa Cup of
 - **Historical Data:** Access to historical data.
 - **Leaderboard:** Access to historical data.
 
-## Technology Stack <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" width="48px" height="auto" />
+## Technology Stack
 - **Frontend:** Angular 17.
 - **API:** API-Football for fetching live data.
 - **Styling:** Css Tailwind & SCSS.
