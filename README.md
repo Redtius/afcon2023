@@ -2,9 +2,9 @@
 
 ## Overview
 This application provides real-time statistics and updates for the Africa Cup of Nations 2023. Using Angular 17 for the frontend and API-Football for backend data retrieval, it offers users an interactive and up-to-date experience for following the tournament.
-
+<center>
 <a href="https://ibb.co/KFZJWyh"><img src="https://i.ibb.co/4PyHpNt/afcon1.png" alt="afcon1" border="0"></a>
-
+</center>
 ## Features
 - **Live Score Updates:** Real-time scores from all matches.
 - **Team Stats:** Detailed statistics for each team participating in the tournament.
