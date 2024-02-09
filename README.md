@@ -5,7 +5,7 @@ This application provides real-time statistics and updates for the Africa Cup of
 
 <a href="https://ibb.co/KFZJWyh"><img src="https://i.ibb.co/4PyHpNt/afcon1.png" alt="homepage" border="0"></a>
 
-<a href="https://ibb.co/5xzgWKL"><img src="https://i.ibb.co/5xzgWKL/afcon2.png" alt="Satistiques page" border="0"></a>
+<a href="https://ibb.co/5xzgWKL"><img src="https://i.ibb.co/k6rsgmX/afcon2.png" alt="statistiques page" border="0"></a>
 
 ## Features
 - **Live Score Updates:** Real-time scores from all matches.
