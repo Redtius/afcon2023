@@ -8,7 +8,7 @@ This application provides real-time statistics and updates for the Africa Cup of
 </p>
 
 <p align="center" style="color:gray;">
-  HomePage
+  Home Page
 </p>
 
 <p align=center >
